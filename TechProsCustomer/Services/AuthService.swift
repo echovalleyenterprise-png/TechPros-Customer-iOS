@@ -25,7 +25,7 @@ final class AuthService {
         }
         let resp: Response = try await APIClient.shared.postPublic(
             "/api/auth/signup",
-            body: ["fullName": fullName, "email": email, "password": password, "role": "customer", "phone": ""]
+            body: ["fullName": fullName, "email": email, "password": password, "role": "customer"]
         )
         if let err = resp.error { throw APIError.serverError(err) }
         return SignUpResult(requiresEmailConfirmation: resp.requiresEmailConfirmation ?? true)
